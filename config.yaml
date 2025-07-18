@@ -1,0 +1,23 @@
+data:
+  raw:
+    fraud: "../data/raw/Fraud_Data.csv"
+    ip_country: "../data/raw/IpAddress_to_Country.csv"
+    creditcard: "../data/raw/creditcard.csv"
+  processed:
+    fraud: "../data/processed/fraud_processed.csv"
+    creditcard: "../data/processed/creditcard_processed.csv"
+    fraud_train_smote: "../data/processed/fraud_train_smote.csv"
+    fraud_train_labels_smote: "../data/processed/fraud_train_labels_smote.csv"
+    fraud_test: "../data/processed/fraud_test.csv"
+    fraud_test_labels: "../data/processed/fraud_test_labels.csv"
+    credit_train_smote: "../data/processed/credit_train_smote.csv"
+    credit_train_labels_smote: "../data/processed/credit_train_labels_smote.csv"
+    credit_test: "../data/processed/credit_test.csv"
+    credit_test_labels: "../data/processed/credit_test_labels.csv"
+
+model:
+  train_test_split:
+    test_size: 0.2
+    random_state: 42
+  smote:
+    random_state: 42

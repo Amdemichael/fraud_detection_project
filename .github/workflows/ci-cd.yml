@@ -62,13 +62,6 @@ jobs:
         run: |
           python src/model_training.py --save-models models/
 
-      - name: Deploy models to S3
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 cp models/ s3://your-bucket/fraud-detection-models/ --recursive
-
       - name: Deploy report to GitHub Pages
         run: |
           cp reports/final_report.md docs/
