@@ -1,9 +1,3 @@
-# Interim Report – Task 1: Data Analysis and Preprocessing
-
-**GitHub Repository:** [Insert your repository link here]
-
----
-
 ## Introduction
 
 This report documents the data analysis and preprocessing steps for the Adey Innovations Inc. fraud detection challenge. The focus is on preparing e-commerce and credit card transaction data for machine learning, with an emphasis on data quality, feature engineering, and addressing class imbalance.
