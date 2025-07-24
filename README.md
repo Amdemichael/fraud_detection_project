@@ -112,20 +112,83 @@ Notebook outputs show class distributions before and after SMOTE, confirming the
 
 ---
 
-## 5. Summary and Next Steps
+## 5. Model Building and Training (Task 2)
 
-- All required data cleaning, merging, feature engineering, and class imbalance handling steps have been completed and are evidenced by notebook outputs and plots.
-- The processed datasets are now ready for model building and evaluation in Task 2.
+### 5.1 Approach
+- Both e-commerce and credit card datasets were used.
+- Two models were trained and compared: Logistic Regression (baseline) and XGBoost (ensemble).
+- Evaluation metrics: F1-Score, AUC-PR, Confusion Matrix, Classification Report, ROC-AUC, Precision, Recall, and Pipeline test score.
+
+### 5.2 Results
+
+#### **E-commerce Fraud Data (Fraud_Data.csv)**
+- **Logistic Regression:**
+  - F1 Score: 0.64
+  - AUC-PR: 0.67
+  - ROC-AUC: (see notebook)
+  - Confusion Matrix: [[22443, 933], [852, 1602]]
+  - Cross-Validation F1: [0.74, 0.74, 0.74, 0.74, 0.74] (mean ≈ 0.74)
+- **XGBoost:**
+  - F1 Score: 0.71
+  - AUC-PR: 0.72
+  - ROC-AUC: 0.84
+  - Precision: 0.97
+  - Recall: 0.56
+  - Confusion Matrix: [[23340, 36], [1087, 1367]]
+  - Cross-Validation F1: [0.97, 0.97, 0.97, 0.97, 0.97] (mean ≈ 0.97)
+  - Best Params (GridSearchCV): {'learning_rate': 0.3, 'max_depth': 5, 'n_estimators': 200}
+  - Pipeline test score: 0.96
+- **Interpretation:** XGBoost achieves a higher F1, AUC-PR, ROC-AUC, and precision, making it preferable for this dataset.
+
+#### **Credit Card Fraud Data (creditcard.csv)**
+- **Logistic Regression:**
+  - F1 Score: 0.10
+  - AUC-PR: 0.71
+  - ROC-AUC: (see notebook)
+  - Confusion Matrix: [[55169, 1482], [12, 83]]
+  - Cross-Validation F1: (see notebook, mean ≈ low)
+- **XGBoost:**
+  - F1 Score: 0.76
+  - AUC-PR: 0.81
+  - ROC-AUC: 0.97
+  - Precision: 0.73
+  - Recall: 0.79
+  - Confusion Matrix: [[56623, 28], [20, 75]]
+  - Cross-Validation F1: (see notebook, mean ≈ high)
+  - Best Params (GridSearchCV): {'learning_rate': 0.3, 'max_depth': 5, 'n_estimators': 200}
+  - Pipeline test score: 0.999
+- **Interpretation:** XGBoost dramatically outperforms Logistic Regression, achieving both high precision and recall for fraud.
+
+### 5.3 Model Comparison and Justification
+- **Best Model:** XGBoost is the best choice for both datasets, as it provides a better balance between catching fraud and minimizing false positives, which is critical for business needs.
+- **Business Error Analysis:** False positives (legitimate flagged as fraud) can impact user experience; false negatives (fraud missed) result in direct loss. XGBoost's high precision and recall make it suitable for deployment.
+- **Pipeline Automation:** Pipelines were demonstrated for both datasets, showing high test scores and readiness for deployment.
+
+---
+
+## 6. Summary and Next Steps
+
+- All required data cleaning, merging, feature engineering, class imbalance handling, and model training steps have been completed and are evidenced by notebook outputs and plots.
+- The processed datasets and trained models are now ready for model explainability and interpretation in Task 3 (SHAP).
+
+## Good to Have (Recommended Enhancements)
+
+- **Hyperparameter Tuning:** GridSearchCV was used for XGBoost.
+- **Cross-Validation:** Stratified k-fold cross-validation was performed for both models.
+- **Model Saving:** All final and best models were saved using joblib.
+- **Additional Metrics:** ROC-AUC, precision, recall, and pipeline scores were reported.
+- **Business Error Analysis:** False positives and negatives were analyzed for business impact.
+- **Pipeline Automation:** scikit-learn Pipelines were used for both datasets.
+- **Documentation:** This README and the notebook are fully updated.
 
 ## Appendix: Key Visualizations
 
 - Class balance bar plots for both datasets
 - Histograms for numeric features
 - Boxplots for selected features by class
-- (Optional: Correlation heatmaps or pairplots)
+- ROC and PR curves for both datasets
 
 *All visualizations and outputs are available in the submitted notebook.*
 
 ---
 
-**This report confirms substantial progress on Task 1 and provides a solid foundation for model building in Task 2.**
