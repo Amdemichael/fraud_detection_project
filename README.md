@@ -192,3 +192,43 @@ Notebook outputs show class distributions before and after SMOTE, confirming the
 
 ---
 
+## 7. Model Explainability with SHAP (Task 3)
+
+### 7.1 Approach
+- Used SHAP (SHapley Additive exPlanations) to interpret the best-performing XGBoost models for both e-commerce and credit card fraud detection.
+- Generated SHAP summary plots, bar plots, and force plots to understand both global and local feature importance.
+
+### 7.2 Key Findings
+
+#### **E-commerce Fraud (Fraud_Data.csv)**
+- **Global Feature Importance:**
+  - Most influential features: `purchase_value`, `time_since_signup`, `transaction_count_user`, `country`, `hour_of_day`, and `day_of_week`.
+  - Fraud is often associated with high purchase values, rapid transactions after signup, and unusual user/device/country patterns.
+- **Local Explanations:**
+  - For individual fraud cases, high purchase value and short time since signup are strong drivers of a fraud prediction.
+
+#### **Credit Card Fraud (creditcard.csv)**
+- **Global Feature Importance:**
+  - Most important features are among the anonymized PCA components (e.g., `V14`, `V10`, `V17`, `V12`) and `Amount`.
+  - The model detects subtle patterns in these features that are highly indicative of fraud.
+- **Local Explanations:**
+  - For individual fraud cases, certain PCA components and transaction amount are the main contributors to a fraud prediction.
+
+### 7.3 Business Insights and Recommendations
+- **Key Drivers of Fraud:**
+  - For e-commerce, focus on high-value, rapid, and unusual transactions.
+  - For credit card, monitor latent patterns and transaction amounts.
+- **Actionable Insights:**
+  - Set up real-time alerts or rules based on top SHAP features.
+  - Monitor new accounts and high-value transactions more closely.
+  - Adjust thresholds or add secondary checks to reduce false positives and improve customer experience.
+- **Model Transparency:**
+  - SHAP plots provide clear, visual explanations for both global and individual predictions, increasing trust in the model among business stakeholders and regulators.
+
+### 7.4 Next Steps
+- Use these SHAP insights to inform model deployment, monitoring, and reporting.
+- Share findings with business and risk teams to refine fraud prevention strategies.
+- Consider periodic retraining and SHAP analysis to adapt to evolving fraud patterns.
+
+---
+
