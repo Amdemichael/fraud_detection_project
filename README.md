@@ -117,19 +117,6 @@ Notebook outputs show class distributions before and after SMOTE, confirming the
 - All required data cleaning, merging, feature engineering, and class imbalance handling steps have been completed and are evidenced by notebook outputs and plots.
 - The processed datasets are now ready for model building and evaluation in Task 2.
 
----
-
-## Self-Assessment (Rubric)
-
-| Criterion                                   | Self-Assessment |
-|----------------------------------------------|-----------------|
-| Report Structure                            | Excellent       |
-| Clarity, and Technical Communication        | Excellent       |
-| EDA Insights and Documentation              | Excellent       |
-| Data Preprocessing: Cleaning & Engineering  | Excellent       |
-
----
-
 ## Appendix: Key Visualizations
 
 - Class balance bar plots for both datasets
